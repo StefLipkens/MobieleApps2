@@ -12,17 +12,6 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <Button
-            android:id="@+id/newUserBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Add User"/>
-
-        <Button
-            android:id="@+id/newDrinkBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Add Drink" />
 
     </LinearLayout>
 
