@@ -8,12 +8,22 @@ public class Drinks {
 
     private String name;
     private String price;
+    private String id;
 
-    /*public Drinks() {};*/
+    //public Drinks() {};*/
 
-    public Drinks(String name, String price) {
+    public Drinks(String name, String price, String id) {
         this.name = name;
         this.price = price;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
+            android:name=".CustomerDetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".ManageDrinksActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />

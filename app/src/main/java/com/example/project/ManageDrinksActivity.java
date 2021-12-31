@@ -2,12 +2,15 @@ package com.example.project;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +33,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.jar.Attributes;
 
@@ -37,7 +41,7 @@ import java.util.jar.Attributes;
 public class ManageDrinksActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef = db.getReference();
+    private DatabaseReference myRef = db.getReference("drinks");
     Drinks drink;
     List<Drinks> drinksList;
     EditText mEditName,mEditPrice;
@@ -47,22 +51,29 @@ public class ManageDrinksActivity extends AppCompatActivity implements AdapterVi
 
     ListView drinksListView;
 
-
-
+    String selectedDrinkKey;
+    Long nextId;
+    String TAG = "tag:";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_drinks);
+
         drinksListView=(ListView) findViewById(R.id.drinkListView);
         drinksListView.setOnItemClickListener(this);
+
         mEditName = (EditText)findViewById(R.id.editDrinkName);
         mEditPrice = (EditText)findViewById(R.id.editDrinkPrice);
+
         editPriceBln=false;
-        myRef.child("drinks").addValueEventListener(new ValueEventListener() {
+
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 getData(dataSnapshot);
+                nextId=dataSnapshot.getChildrenCount()+1;
+                Log.i("long id",nextId+"");
             }
 
             @Override
@@ -99,15 +110,22 @@ public class ManageDrinksActivity extends AppCompatActivity implements AdapterVi
 
     public void UpdateDrink(String name, String price)
     {
-
+        Drinks drink = new Drinks(name, price,selectedDrinkKey);
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put( selectedDrinkKey, drink);
+        myRef.updateChildren(childUpdates);
     }
 
     public void NewDrink(String name, String price) {
-        Drinks drink = new Drinks(name,price);
+
+        String NewId = nextId.toString();
+        Drinks drink = new Drinks(name,price, NewId);
+        Log.d(TAG, name + price + NewId);
         drinksList.add(drink);
+
        /* drink.setName(name);
         drink.setPrice(price);*/
-        myRef.child("drinks").push().setValue(drink);
+        myRef.child(NewId).setValue(drink);
     }
 
     public void getData(DataSnapshot dataSnapshot)
@@ -134,11 +152,14 @@ public class ManageDrinksActivity extends AppCompatActivity implements AdapterVi
             HashMap<String, String> map = new HashMap<String, String>();
             String name = ds.child("name").getValue().toString();
             String price = ds.child("price").getValue().toString();
+            String id = ds.child("id").getValue().toString();
+            Log.d("key", ds.getKey());
+
             map.put("name", name);
             map.put("price", price);
             data.add(map);
 
-            drink = new Drinks(name, price);
+            drink = new Drinks(name, price,id);
             drinksList.add(drink);
         }
 
@@ -158,8 +179,9 @@ public class ManageDrinksActivity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Drinks selectedDrink = new Drinks(drinksList.get(i).getName(), drinksList.get(i).getPrice());
-        Log.d("sdfsq",selectedDrink.getName());
+        Drinks selectedDrink = new Drinks(drinksList.get(i).getName(), drinksList.get(i).getPrice(), drinksList.get(i).getId());
+        selectedDrinkKey = drinksList.get(i).getId();
+        Log.d(TAG, selectedDrinkKey);
         editPriceBln=true;
         addDrinkButton.setText("Update");
         mEditPrice.setText(selectedDrink.getPrice());
