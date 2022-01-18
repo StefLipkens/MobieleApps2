@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = db.getReference("customers");
     Customer customer;
-    List<Customer> customerList;
+    ArrayList<Customer> customerList;
     ListView customerListView;
 
     @Override
@@ -77,35 +78,51 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void getData(DataSnapshot dataSnapshot)
     {
         customerList = new ArrayList<>();
-        ArrayList<HashMap<String, String>> data =
-                new ArrayList<HashMap<String, String>>();
+        //ArrayList<HashMap<String, String>> data =
+        //      new ArrayList<HashMap<String, String>>();
         for (DataSnapshot ds : dataSnapshot.getChildren()) {
-            HashMap<String, String> map = new HashMap<String, String>();
+            //HashMap<String, String> map = new HashMap<String, String>();
             String name = ds.child("name").getValue().toString();
             String telNr = ds.child("telNr").getValue().toString();
             String id = ds.child("id").getValue().toString();
             String lastTimePaid = ds.child("lastTimePaid").getValue().toString();
             String status = ds.child("status").getValue().toString();
+            ArrayList<HistoryItem> historyItemArrayList=new ArrayList<>();
+            for(DataSnapshot dsi : ds.child("history").getChildren())
+            {
+                HistoryItem item = new HistoryItem(dsi.child("description").getValue().toString(),dsi.child("orderDateTime").getValue().toString(), dsi.child("price").getValue().toString());
+                historyItemArrayList.add(item);
+            }
 
-            map.put("name", name);
-            map.put("telNr", telNr);
-            map.put("status", status);
-            map.put("lastTimePaid",lastTimePaid);
-            data.add(map);
+            //map.put("name", name);
+            //map.put("telNr", telNr);
+            //map.put("status", status);
+            //map.put("lastTimePaid",lastTimePaid);
+            //data.add(map);
 
-            customer = new Customer(id,name,telNr,status,lastTimePaid);
+            customer = new Customer(id,name,telNr,status,lastTimePaid,historyItemArrayList);
             customerList.add(customer);
         }
 
         // create the resource, from, and to variables
-        int resource = R.layout.customers_row;
-        String[] from = {"name", "status", "lastTimePaid"};
-        int[] to = {R.id.CustomerNameTextView, R.id.CustomerStatusTextView, R.id.lastTimePaidTextView};
+//        int resource = R.layout.customers_row;
+//        String[] from = {"name", "status", "lastTimePaid"};
+//        int[] to = {R.id.CustomerNameTextView, R.id.CustomerStatusTextView, R.id.lastTimePaidTextView};
+//
+//        // create and set the adapter
+//        SimpleAdapter adapter =
+//                new SimpleAdapter(this, data, resource, from, to);
+//        customerListView.setAdapter(adapter);
 
-        // create and set the adapter
-        SimpleAdapter adapter =
-                new SimpleAdapter(this, data, resource, from, to);
-        customerListView.setAdapter(adapter);
+
+
+        // Construct the data source
+
+// Create the adapter to convert the array to views
+        CustomerAdapter customerAdapter = new CustomerAdapter(this, customerList);
+        // Attach the adapter to a ListView
+
+        customerListView.setAdapter(customerAdapter);
     }
 
     @Override
@@ -134,6 +151,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent userIntent = new Intent(MainActivity.this, CustomerDetailActivity.class);
+        customer = (Customer) customerListView.getItemAtPosition(i);
+        Bundle b = new Bundle();
+        b.putString("key", customer.getId()); //Your id
+        userIntent.putExtras(b); //Put your id to your next Intent
         startActivity(userIntent);
     }
 }

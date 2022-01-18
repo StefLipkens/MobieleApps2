@@ -1,20 +1,26 @@
 package com.example.project;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
     private String id;
     private String name;
     private String telNr;
     private String status;
     private String lastTimePaid;
-    private String history;
+    private ArrayList<HistoryItem> history;
 
-    public Customer(String id, String name, String telNr, String status, String lastTimePaid)
+    public Customer(){}
+
+    public Customer(String id, String name, String telNr, String status, String lastTimePaid, ArrayList<HistoryItem> history)
     {
         this.id = id;
         this.name=name;
         this.telNr=telNr;
         this.status=status;
         this.lastTimePaid=lastTimePaid;
+        this.history=history;
     }
 
     public String getId() {
@@ -55,5 +61,13 @@ public class Customer {
 
     public void setLastTimePaid(String lastTimePaid) {
         this.lastTimePaid = lastTimePaid;
+    }
+
+    public ArrayList<HistoryItem> getHistory() {
+        return history;
+    }
+
+    public void setHistory(ArrayList<HistoryItem> history) {
+        this.history = history;
     }
 }

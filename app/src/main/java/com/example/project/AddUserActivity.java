@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -28,6 +29,8 @@ public class AddUserActivity extends AppCompatActivity {
 
     Button addCustomerButton;
     EditText mEditName,mEditTelNr;
+
+    ArrayList<HistoryItem> historyItemArrayList =new ArrayList<>();
 
     Long nextId;
 
@@ -70,7 +73,7 @@ public class AddUserActivity extends AppCompatActivity {
         String lastTimePaid = date.toString();
         String NewId = nextId.toString();
         String status = "0";
-        Customer customer = new Customer(NewId,name, telNr,status, lastTimePaid);
+        Customer customer = new Customer(NewId,name, telNr,status, lastTimePaid,historyItemArrayList);
         myRef.child(NewId).setValue(customer);
         myRef.child(NewId).setValue(customer)
             .addOnSuccessListener(new OnSuccessListener<Void>() {

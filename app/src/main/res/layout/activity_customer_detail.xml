@@ -4,19 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerDetailActivity">
+    tools:context=".CustomerDetailActivity"
+    android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode"
+    android:windowSoftInputMode="adjustResize"
+    android:orientation="vertical">
 
     <ListView
         android:id="@+id/drinkListView"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:background="@color/aliceblue"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/UserNameTextView" />
 
     <TextView
         android:id="@+id/DrinkNameLbl"
@@ -69,10 +73,46 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
-        android:text="Button"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+
+    <Button
+        android:id="@+id/CheckHistoryBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Check History"
+        app:layout_constraintEnd_toEndOf="@+id/AddBtn"
+        app:layout_constraintStart_toStartOf="@+id/AddBtn"
+        app:layout_constraintTop_toBottomOf="@+id/AddBtn" />
+
+    <TextView
+        android:id="@+id/UserNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="TextView"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DrinkPriceLbl" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/descriptionEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:text="Description"
+        app:layout_constraintEnd_toEndOf="@+id/drinkListView"
+        app:layout_constraintStart_toStartOf="@+id/DrinkNameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/DrinkNameLbl" />
 </androidx.constraintlayout.widget.ConstraintLayout>
