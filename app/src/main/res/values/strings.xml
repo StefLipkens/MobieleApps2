@@ -1,12 +1,47 @@
 <resources>
-    <string name="app_name">Rekening</string>
-    <string name="title_activity_main2">MainActivity2</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Bill</string>
+<!--    TEXTVIEWS-->
+    <string name="lbl_name">Name:</string>
+    <string name="lbl_price">Price:</string>
+    <string name="lbl_status" translatable="false">Status:</string>
+    <string name="lbl_description">Description:</string>
+    <string name="lbl_last_time_paid">Last time paid:</string>
+    <string name="lbl_last_time_ordered">Last time ordered:</string>
+    <string name="lbl_order_date">Order date:</string>
+    <string name="lbl_telnr">Phonenr:</string>
+    <string name="lbl_btn_add_info">Click to add/update. Hold to Delete</string>
+    <string name="lbl_nothing_ordered">Nothing ordered yet</string>
+    <string name="lbl_nothing_paid">Nothing paid yet</string>
+<!--    BUTTONS-->
+    <string name="btn_add">Add</string>
+    <string name="btn_check_history">Check history</string>
+    <string name="btn_set_to_0">Set To 0</string>
+    <string name="btn_payment_request">Request payment</string>
+<!--    DIALOGS-->
+    <string name="dialog_positive_btn">Confirm</string>
+    <string name="dialog_negative_btn">Cancel</string>
+    <string name="dialog_message_delete_confirmation_1">Are you sure you want to delete </string>
+    <string name="dialog_message_delete_confirmation_2"></string>
+    <string name="dialog_title_no_history">No order history</string>
+    <string name="dialog_message_no_history">You have no order history.</string>
+    <string name="dialog_btn_no_history">Confirm</string>
+    <string name="dialog_title_delete_customer">Delete Customer</string>
+    <string name="dialog_title_delete_drink">Delete Drink</string>
+<!--    MENU-->
+    <string name="menu_add_user">Add user</string>
+    <string name="menu_manage_drinks">Manage drinks</string>
+<!--    TOASTS-->
+    <string name="toast_error_name_tel">Error: name &amp; phonenr must have a value!</string>
+    <string name="toast_error_name_price">Error: name &amp; price must have a value!</string>
+    <string name="toast_drink_added">Drink added!</string>
+    <string name="toast_drink_updated">Drink updated!</string>
+    <string name="toast_drink_deleted">Drink removed!</string>
+    <string name="toast_customer_added">Customer added!</string>
+    <string name="toast_customer_deleted">Customer deleted!</string>
+    <string name="toast_error_select_drink">Error: no drink was selected</string>
+    <string name="toast_nothing_added">Error: nothing was added!</string>
+    <string name="toast_sms_sent">SMS sent!</string>
+<!--    SMS-->
+    <string name="sms_payment_request_1">Hi, can you please pay me </string>
+    <string name="sms_payment_request_2"></string>
 </resources>

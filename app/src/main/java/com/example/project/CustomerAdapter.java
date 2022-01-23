@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.project.Customer;
+import com.example.project.R;
+
 import java.util.ArrayList;
 
 public class CustomerAdapter extends ArrayAdapter<Customer> {
@@ -28,10 +31,12 @@ public class CustomerAdapter extends ArrayAdapter<Customer> {
         TextView customerName = (TextView) convertView.findViewById(R.id.CustomerNameTextView);
         TextView customerStatus = (TextView) convertView.findViewById(R.id.CustomerStatusTextView);
         TextView customerLTP= (TextView) convertView.findViewById(R.id.LastTimePaidTextView);
+        TextView customerLTO = (TextView) convertView.findViewById(R.id.lastTimeOrderedTextView);
         // Populate the data into the template view using the data object
         customerName.setText(customer.getName());
-        customerStatus.setText(customer.getStatus());
+        customerStatus.setText("€ "+customer.getStatus());
         customerLTP.setText(customer.getLastTimePaid());
+        customerLTO.setText(customer.getLastTimeOrdered());
         // Return the completed view to render on screen
         return convertView;
     }

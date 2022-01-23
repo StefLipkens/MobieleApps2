@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/addUserItem"
-        android:title="Add User"
+        android:title="@string/menu_add_user"
         app:showAsAction="never"/>
     <item
         android:id="@+id/addDrinkItem"
-        android:title="Manage Drinks"
+        android:title="@string/menu_manage_drinks"
         app:showAsAction="never"/>
 </menu>

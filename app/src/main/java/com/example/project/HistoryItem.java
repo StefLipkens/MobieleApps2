@@ -1,12 +1,11 @@
 package com.example.project;
 
-import java.util.Date;
-
-public class HistoryItem {
+public class HistoryItem{
     private String price;
     private String description;
     private String orderDateTime;
 
+    //wordt gebruikt bij opstarten detailpagina indien customer een history heeft
     public HistoryItem(){}
 
     public HistoryItem(String price, String description, String orderDateTime) {
@@ -14,7 +13,6 @@ public class HistoryItem {
         this.description = description;
         this.orderDateTime=orderDateTime;
     }
-
 
     public String getPrice() {
         return price;
@@ -39,4 +37,5 @@ public class HistoryItem {
     public void setOrderDateTime(String orderDateTime) {
         this.orderDateTime = orderDateTime;
     }
+
 }

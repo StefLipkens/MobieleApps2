@@ -10,8 +10,6 @@ public class Drinks {
     private String price;
     private String id;
 
-    //public Drinks() {};*/
-
     public Drinks(String name, String price, String id) {
         this.name = name;
         this.price = price;

@@ -7,6 +7,7 @@
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/activity_add_drink.xml" value="0.33" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/activity_add_user.xml" value="0.33" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/activity_customer_detail.xml" value="0.25" />
+        <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/activity_history.xml" value="0.20364583333333333" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/activity_main.xml" value="0.3342391304347826" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/activity_main2.xml" value="0.16041666666666668" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/activity_manage_drink.xml" value="0.36666666666666664" />
@@ -17,7 +18,9 @@
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/customer_history.xml" value="0.16041666666666668" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/customers_row.xml" value="0.67" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/drinks_row.xml" value="0.28405797101449276" />
+        <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/drinks_row_header.xml" value="0.19895833333333332" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/fragment_drink_list_view.xml" value="0.203125" />
+        <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/fragment_drinks.xml" value="0.3625" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/2021-2022/semester_1/Mobiele apps 2/Project/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />

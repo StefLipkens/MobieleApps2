@@ -1,7 +1,7 @@
 package com.example.project;
 
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class Customer {
     private String id;
@@ -9,18 +9,27 @@ public class Customer {
     private String telNr;
     private String status;
     private String lastTimePaid;
+    private String lastTimeOrdered;
     private ArrayList<HistoryItem> history;
 
     public Customer(){}
 
-    public Customer(String id, String name, String telNr, String status, String lastTimePaid, ArrayList<HistoryItem> history)
-    {
+    public Customer(String id, String name, String telNr, String status, String lastTimePaid,String lastTimeOrdered, ArrayList<HistoryItem> history) {
         this.id = id;
         this.name=name;
         this.telNr=telNr;
         this.status=status;
         this.lastTimePaid=lastTimePaid;
+        this.lastTimeOrdered=lastTimeOrdered;
         this.history=history;
+    }
+
+    public String getTelNr() {
+        return telNr;
+    }
+
+    public void setTelNr(String telNr) {
+        this.telNr = telNr;
     }
 
     public String getId() {
@@ -39,14 +48,6 @@ public class Customer {
         this.name = name;
     }
 
-    public String getTelNr() {
-        return telNr;
-    }
-
-    public void setTelNr(String telNr) {
-        this.telNr = telNr;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -63,6 +64,14 @@ public class Customer {
         this.lastTimePaid = lastTimePaid;
     }
 
+    public String getLastTimeOrdered() {
+        return lastTimeOrdered;
+    }
+
+    public void setLastTimeOrdered(String lastTimeOrdered) {
+        this.lastTimeOrdered = lastTimeOrdered;
+    }
+
     public ArrayList<HistoryItem> getHistory() {
         return history;
     }
@@ -70,4 +79,5 @@ public class Customer {
     public void setHistory(ArrayList<HistoryItem> history) {
         this.history = history;
     }
+
 }

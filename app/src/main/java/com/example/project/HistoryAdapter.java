@@ -1,13 +1,20 @@
 package com.example.project;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+
+import com.example.project.HistoryItem;
+import com.example.project.R;
 
 import java.util.ArrayList;
 
@@ -27,10 +34,11 @@ public class HistoryAdapter extends ArrayAdapter<HistoryItem> {
         // Lookup view for data population
         TextView itemName = (TextView) convertView.findViewById(R.id.descriptionTextView);
         TextView itemPrice = (TextView) convertView.findViewById(R.id.priceTextView);
+
         TextView itemAddedDate = (TextView) convertView.findViewById(R.id.dateTimeTextView);
         // Populate the data into the template view using the data object
         itemName.setText(item.getDescription());
-        itemPrice.setText(item.getPrice());
+        itemPrice.setText("€ "+item.getPrice());
         itemAddedDate.setText(item.getOrderDateTime().toString());
         // Return the completed view to render on screen
         return convertView;

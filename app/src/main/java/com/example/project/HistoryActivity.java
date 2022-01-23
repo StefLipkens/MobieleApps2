@@ -1,13 +1,13 @@
 package com.example.project;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.SimpleAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -17,27 +17,51 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class HistoryActivity extends AppCompatActivity {
 
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference preRef = db.getReference("customers");
-    ArrayList<HistoryItem> historyItemList;
-    HistoryItem historyItem;
+    private DatabaseReference myRef = db.getReference("customers");
+
+    private Customer customer;
+    private ArrayList<HistoryItem> historyItemList;
+
+    private ListView historyListView;
+    private TextView userTextView;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_user);
+        setContentView(R.layout.activity_history);
 
-        preRef.addValueEventListener(new ValueEventListener() {
+        historyListView = (ListView)findViewById(R.id.historyItemListView);
+        userTextView=(TextView)findViewById(R.id.userNameTextView);
+
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
-
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("datasnapshot", dataSnapshot.toString());
+                Bundle b = getIntent().getExtras();
+                String customerKey = myRef.child(b.getString("key")).getKey();
+                customer = dataSnapshot.child(customerKey).getValue(Customer.class);
+                userTextView.setText(customer.getName());
+                historyItemList=customer.getHistory();
+                if(historyItemList==null) {
+                    Log.d("key","sdf");
+                    AlertDialog.Builder builder = new AlertDialog.Builder(HistoryActivity.this);
+                    builder.setTitle(getResources().getString(R.string.dialog_title_no_history));
+                    builder.setMessage(getResources().getString(R.string.dialog_message_no_history));
+                    builder.setPositiveButton(getResources().getString(R.string.dialog_btn_no_history), (dialog, which) -> finish());
+                    AlertDialog dialog = builder.create();
+                    //dialog.show();                                //PROBLEEM TREEDT HIER OP
+                }
+                else {
+                    HistoryAdapter historyAdapter =
+                            new HistoryAdapter(HistoryActivity.this, historyItemList);
+                    historyListView.setAdapter(historyAdapter);
+                }
             }
 
             @Override
@@ -47,39 +71,5 @@ public class HistoryActivity extends AppCompatActivity {
         });
 
 
-
-
     }
-
-    public void getData(DataSnapshot dataSnapshot)
-    {
-        historyItemList = new ArrayList<>();
-//        ArrayList<HashMap<String, String>> data =
-//                new ArrayList<HashMap<String, String>>();
-        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-            //HashMap<String, String> map = new HashMap<String, String>();
-            String name = ds.child("name").getValue().toString();
-            String price = ds.child("price").getValue().toString();
-            String id = ds.child("id").getValue().toString();
-//            Log.d("key", ds.getKey());
-//            map.put("description", id);
-//            map.put("name", name);
-//            map.put("price", price);
-//            data.add(map);
-
-           /* historyItem = new HistoryItem(name, price,id);
-            historyItemList.add(historyItem);*/
-        }
-
-        // create the resource, from, and to variables
-        /*int resource = R.layout.drinks_row;
-        String[] from = {"name", "price"};
-        int[] to = {R.id.nameTextView, R.id.priceTextView};
-
-        // create and set the adapter
-        SimpleAdapter adapter =
-                new SimpleAdapter(this, data, resource, from, to);
-//        drinksListView.setAdapter(adapter);*/
-    }
-
 }

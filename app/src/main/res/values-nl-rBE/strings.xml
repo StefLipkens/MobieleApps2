@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    TEXTVIEWS-->
+    <string name="app_name">Rekening</string>
+    <string name="lbl_name">Naam:</string>
+    <string name="lbl_price">Prijs:</string>
+    <string name="lbl_description">Beschrijving:</string>
+    <string name="lbl_last_time_paid">Laatst betaald:</string>
+    <string name="lbl_last_time_ordered">Laatst besteld:</string>
+    <string name="lbl_order_date">Besteldatum:</string>
+    <string name="lbl_telnr">Telefoonnr.:</string>
+    <string name="lbl_btn_add_info">Klik om toe te voegen/updaten. Houd ingedrukt voor verwijderen</string>
+    <string name="lbl_nothing_ordered">Nog niks besteld</string>
+    <string name="lbl_nothing_paid">Nog nooit betaald</string>
+<!--    BUTTONS-->
+    <string name="btn_add">Toevoegen</string>
+    <string name="btn_check_history">Bekijk geschiedenis</string>
+    <string name="btn_set_to_0">Zet status op 0</string>
+    <string name="btn_payment_request">Betaalverzoek</string>
+<!--    DIALOGS-->
+    <string name="dialog_positive_btn">OK</string>
+    <string name="dialog_negative_btn">Annuleer</string>
+    <string name="dialog_title_no_history">Geen bestelgeschiedens</string>
+    <string name="dialog_message_no_history">Je hebt geen bestelgeschiedenis.</string>
+    <string name="dialog_btn_no_history">OK</string>
+    <string name="dialog_title_delete_customer">Verwijder gebruiker</string>
+    <string name="dialog_message_delete_confirmation_1">Ben je zeker dat je </string>
+    <string name="dialog_message_delete_confirmation_2">wilt verwijderen?</string>
+    <string name="dialog_title_delete_drink">Verwijder drank</string>
+<!--    MENU-->
+    <string name="menu_add_user">Gebruiker toevoegen</string>
+    <string name="menu_manage_drinks">Beheer dranken</string>
+<!--    TOASTS-->
+    <string name="toast_error_name_tel">Error: naam &amp; telnr moeten ingevuld zijn!</string>
+    <string name="toast_error_name_price">Error: naam &amp; prijs moeten ingevuld zijn!</string>
+    <string name="toast_drink_added">Drankje toegevoegd!</string>
+    <string name="toast_drink_updated">Drankje geupdate!</string>
+    <string name="toast_drink_deleted">Drankje verwijdert!</string>
+    <string name="toast_customer_added">Gebruiker added!</string>
+    <string name="toast_customer_deleted">Gebruiker deleted!</string>
+    <string name="toast_error_select_drink">Error: geen drankje geselecteerd!</string>
+    <string name="toast_nothing_added">Error: niets toegevoegd!</string>
+    <string name="toast_sms_sent">SMS verstuurd!</string>
+<!--    SMS-->
+    <string name="sms_payment_request_2"> betalen</string>
+    <string name="sms_payment_request_1">Hoi, kan je mij alsjeblieft </string>
+</resources>

@@ -9,64 +9,48 @@
     android:windowSoftInputMode="adjustResize"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/drinkListView"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:background="@color/aliceblue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserNameTextView" />
-
     <TextView
         android:id="@+id/DrinkNameLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:text="Name:"
+        android:layout_marginTop="15dp"
+        android:text="@string/lbl_name"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drinkListView" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/descriptionEditText"
+        app:layout_constraintTop_toBottomOf="@+id/drinksFrameLayout" />
 
     <TextView
         android:id="@+id/DrinkName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/DrinkNameLbl"
         app:layout_constraintStart_toEndOf="@+id/DrinkNameLbl"
-        app:layout_constraintTop_toBottomOf="@+id/drinkListView" />
+        app:layout_constraintTop_toTopOf="@+id/DrinkNameLbl" />
 
     <TextView
         android:id="@+id/DrinkPriceLbl"
-        android:layout_width="57dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="120dp"
-        android:text="Price:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/lbl_price"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drinkListView" />
+        app:layout_constraintStart_toStartOf="@+id/priceEditText"
+        app:layout_constraintTop_toBottomOf="@+id/drinksFrameLayout" />
 
     <TextView
         android:id="@+id/DrinkPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
         android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/DrinkPriceLbl"
-        app:layout_constraintTop_toBottomOf="@+id/drinkListView" />
+        app:layout_constraintTop_toTopOf="@+id/DrinkPriceLbl" />
 
     <Button
         android:id="@+id/AddBtn"
@@ -75,7 +59,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
-        android:text="Add"
+        android:text="@string/btn_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +69,7 @@
         android:id="@+id/CheckHistoryBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Check History"
+        android:text="@string/btn_check_history"
         app:layout_constraintEnd_toEndOf="@+id/AddBtn"
         app:layout_constraintStart_toStartOf="@+id/AddBtn"
         app:layout_constraintTop_toBottomOf="@+id/AddBtn" />
@@ -106,13 +90,79 @@
     <EditText
         android:id="@+id/descriptionEditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="text"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:text="Description"
-        app:layout_constraintEnd_toEndOf="@+id/drinkListView"
-        app:layout_constraintStart_toStartOf="@+id/DrinkNameLbl"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DrinkNameLbl" />
+
+
+    <EditText
+        android:id="@+id/priceEditText"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DrinkPriceLbl" />
+
+    <Button
+        android:id="@+id/SetToZeroBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_set_to_0"
+        app:layout_constraintEnd_toEndOf="@+id/CheckHistoryBtn"
+        app:layout_constraintStart_toStartOf="@+id/CheckHistoryBtn"
+        app:layout_constraintTop_toBottomOf="@+id/CheckHistoryBtn" />
+
+    <FrameLayout
+        android:id="@+id/drinksFrameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserNameTextView">
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/PaymentRequestBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_payment_request"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/SetToZeroBtn"
+        app:layout_constraintStart_toStartOf="@+id/SetToZeroBtn"
+        app:layout_constraintTop_toBottomOf="@+id/SetToZeroBtn" />
+
+    <!--    <Button-->
+<!--        android:id="@+id/SubtractValueBtn"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Remove"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/priceEditText"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/priceEditText"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/SetToZeroBtn" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/subtractValueEditText"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="text"-->
+<!--        android:text=""-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/descriptionEditText"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/descriptionEditText"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/SetToZeroBtn" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

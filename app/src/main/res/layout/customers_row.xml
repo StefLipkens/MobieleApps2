@@ -7,11 +7,11 @@
 
     <TextView
         android:id="@+id/CustomerNameTextView"
-        android:textSize="20dp"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,11 +34,20 @@
         app:layout_constraintTop_toBottomOf="@+id/StatusLbl" />
 
     <TextView
+        android:id="@+id/lastTimeOrderedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/lastTimeOrderedLbl"
+        app:layout_constraintTop_toBottomOf="@+id/LastTimePaidLbl" />
+
+    <TextView
         android:id="@+id/StatusLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Status:"
+        android:text="@string/lbl_status"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CustomerNameTextView" />
 
@@ -47,7 +56,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Last Time Paid:"
+        android:text="@string/lbl_last_time_paid"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StatusLbl" />
+
+    <TextView
+        android:id="@+id/lastTimeOrderedLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/lbl_last_time_ordered"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LastTimePaidLbl" />
 </androidx.constraintlayout.widget.ConstraintLayout>

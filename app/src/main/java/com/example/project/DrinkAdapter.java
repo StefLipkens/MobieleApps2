@@ -8,6 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.project.Drinks;
+import com.example.project.R;
 
 import java.util.ArrayList;
 
@@ -29,7 +33,7 @@ public class DrinkAdapter extends ArrayAdapter<Drinks> {
         TextView drinkPrice = (TextView) convertView.findViewById(R.id.priceTextView);
         // Populate the data into the template view using the data object
        drinkName.setText(drink.getName());
-       drinkPrice.setText(drink.getPrice());
+       drinkPrice.setText("€ "+drink.getPrice());
         // Return the completed view to render on screen
         return convertView;
     }
