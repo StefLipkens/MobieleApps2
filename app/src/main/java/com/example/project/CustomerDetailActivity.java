@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,7 +57,7 @@ public class CustomerDetailActivity extends AppCompatActivity implements TextWat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_detail);
 
-        SmsManager smsManager = SmsManager.getDefault();
+
 
         drinkNameTxtView = (TextView) findViewById(R.id.DrinkName);
         drinkPriceTxtView = (TextView) findViewById(R.id.DrinkPrice);
@@ -82,7 +83,7 @@ public class CustomerDetailActivity extends AppCompatActivity implements TextWat
                 else {
                     AddDrink(price,description);
                     Toast.makeText(getApplicationContext(),getString(R.string.toast_drink_added),Toast.LENGTH_SHORT).show();
-                    finish();
+
                 }
 
             }
@@ -93,7 +94,7 @@ public class CustomerDetailActivity extends AppCompatActivity implements TextWat
                 Toast.makeText(getApplicationContext(),getString(R.string.toast_drink_added),Toast.LENGTH_SHORT).show();
             }
             else {
-                Toast.makeText(getApplicationContext(),getString(R.string.toast_drink_added),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),getString(R.string.toast_error_select_drink),Toast.LENGTH_SHORT).show();
             }
 
         });
@@ -114,9 +115,10 @@ public class CustomerDetailActivity extends AppCompatActivity implements TextWat
         paymentRequestBtn = (Button)findViewById(R.id.PaymentRequestBtn);
         paymentRequestBtn.setOnClickListener(view -> {
             if(customer.getStatus()!=null) {
+                SmsManager smsManager = SmsManager.getDefault();
                 smsManager.sendTextMessage(customer.getTelNr(), null, getString(R.string.sms_payment_request_1)+" "+customer.getStatus()+getString(R.string.sms_payment_request_2)+"?", null, null);
                 smsManager.sendTextMessage(customer.getTelNr(),null,"BE31 7370 5087 7755",null,null);
-                Toast.makeText(getApplicationContext(),getString(R.string.toast_drink_added),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),getString(R.string.toast_sms_sent),Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -128,10 +130,12 @@ public class CustomerDetailActivity extends AppCompatActivity implements TextWat
                 String customerKey = myCustomers.child(b.getString("key")).getKey();
                 customer = dataSnapshot.child(customerKey).getValue(Customer.class);
                 customer.setId(customerKey);
-                userNameTextView.setText(customer.getName());
+                userNameTextView.setText(customer.getName() + " - " + customer.getStatus());
                 if(Double.valueOf(customer.getStatus())>0)
                 {
                     paymentRequestBtn.setVisibility(View.VISIBLE);
+                    checkhistoryBtn.setVisibility(View.VISIBLE);
+                    setTo0Btn.setVisibility(View.VISIBLE);
                 }
 
                 Log.d("customerkey",customer.getId());
@@ -169,10 +173,11 @@ public class CustomerDetailActivity extends AppCompatActivity implements TextWat
             historyItemArrayList = customer.getHistory();
         }
 
-        String total = customer.getStatus();
-        Double doubleTotal = Double.valueOf(total);
+        String currentStatus = customer.getStatus();
+        Double doubleStatus = Double.valueOf(currentStatus);
         Double doublePrice = Double.valueOf(price);
-        String newStatus = String.valueOf(doublePrice + doubleTotal);
+        Double doubleTotal = doublePrice + doubleStatus;
+        String newStatus = String.valueOf(doubleTotal);
         Date date = Calendar.getInstance().getTime();
         String dateTime = DateFormat.getDateTimeInstance().format(date);
         HistoryItem historyItem = new HistoryItem(price, description, dateTime);
@@ -184,6 +189,7 @@ public class CustomerDetailActivity extends AppCompatActivity implements TextWat
         customer.setHistory(historyItemArrayList);
 
         myCustomers.child(customer.getId()).setValue(customer);
+        finish();
     }
 
     private void SetTo0() {

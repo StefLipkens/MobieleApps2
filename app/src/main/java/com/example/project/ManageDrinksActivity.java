@@ -70,24 +70,6 @@ public class ManageDrinksActivity extends AppCompatActivity {
         mEditName = (EditText)findViewById(R.id.editDrinkName);
         mEditPrice = (EditText)findViewById(R.id.editDrinkPrice);
 
-//        Query HighestId = myRef.child("id").limitToLast(1);
-//        HighestId.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot){
-//                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-//                    String Key = childSnapshot.getKey();
-//                    nextId = Integer.parseInt(Key)+1;
-//                    Log.d("nextId",String.valueOf(Key));
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                throw databaseError.toException();
-//            }
-//        });
-
-
-
         addDrinkButton = (Button)findViewById(R.id.addDrinkBtn);
         addDrinkButton.setOnClickListener(view -> {
 

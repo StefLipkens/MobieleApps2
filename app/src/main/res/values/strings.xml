@@ -12,6 +12,7 @@
     <string name="lbl_btn_add_info">Click to add/update. Hold to Delete</string>
     <string name="lbl_nothing_ordered">Nothing ordered yet</string>
     <string name="lbl_nothing_paid">Nothing paid yet</string>
+    <string name="lbl_history">Order history</string>
 <!--    BUTTONS-->
     <string name="btn_add">Add</string>
     <string name="btn_check_history">Check history</string>
@@ -42,6 +43,6 @@
     <string name="toast_nothing_added">Error: nothing was added!</string>
     <string name="toast_sms_sent">SMS sent!</string>
 <!--    SMS-->
-    <string name="sms_payment_request_1">Hi, can you please pay me </string>
+    <string name="sms_payment_request_1">Hi, can you please pay me €</string>
     <string name="sms_payment_request_2"></string>
 </resources>

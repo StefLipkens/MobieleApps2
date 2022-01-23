@@ -46,7 +46,7 @@ public class HistoryActivity extends AppCompatActivity {
                 Bundle b = getIntent().getExtras();
                 String customerKey = myRef.child(b.getString("key")).getKey();
                 customer = dataSnapshot.child(customerKey).getValue(Customer.class);
-                userTextView.setText(customer.getName());
+                userTextView.setText(getString(R.string.lbl_history)+" - "+ customer.getName());
                 historyItemList=customer.getHistory();
                 if(historyItemList==null) {
                     Log.d("key","sdf");

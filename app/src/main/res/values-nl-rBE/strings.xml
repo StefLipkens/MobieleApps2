@@ -12,6 +12,7 @@
     <string name="lbl_btn_add_info">Klik om toe te voegen/updaten. Houd ingedrukt voor verwijderen</string>
     <string name="lbl_nothing_ordered">Nog niks besteld</string>
     <string name="lbl_nothing_paid">Nog nooit betaald</string>
+    <string name="lbl_history">Bestelgeschiedenis</string>
 <!--    BUTTONS-->
     <string name="btn_add">Toevoegen</string>
     <string name="btn_check_history">Bekijk geschiedenis</string>
@@ -43,5 +44,5 @@
     <string name="toast_sms_sent">SMS verstuurd!</string>
 <!--    SMS-->
     <string name="sms_payment_request_2"> betalen</string>
-    <string name="sms_payment_request_1">Hoi, kan je mij alsjeblieft </string>
+    <string name="sms_payment_request_1">Hoi, kan je mij alsjeblieft €</string>
 </resources>

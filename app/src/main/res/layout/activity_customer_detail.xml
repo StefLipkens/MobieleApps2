@@ -70,9 +70,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_check_history"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/AddBtn"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/AddBtn"
-        app:layout_constraintTop_toBottomOf="@+id/AddBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/SetToZeroBtn" />
 
     <TextView
         android:id="@+id/UserNameTextView"
@@ -119,9 +121,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_set_to_0"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/CheckHistoryBtn"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/CheckHistoryBtn"
-        app:layout_constraintTop_toBottomOf="@+id/CheckHistoryBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/AddBtn" />
 
     <FrameLayout
         android:id="@+id/drinksFrameLayout"
@@ -142,8 +146,9 @@
         android:text="@string/btn_payment_request"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/SetToZeroBtn"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/SetToZeroBtn"
-        app:layout_constraintTop_toBottomOf="@+id/SetToZeroBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/CheckHistoryBtn" />
 
     <!--    <Button-->
 <!--        android:id="@+id/SubtractValueBtn"-->
